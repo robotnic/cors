@@ -80,7 +80,8 @@ module.exports = function (options) {
       headersSet[key] = value;
     }
 
-    if (this.method !== 'OPTIONS') {
+    if (this.method !== 'OPTIONS' || !this.get('Access-Control-Request-Method')) {
+
       // Simple Cross-Origin Request, Actual Request, and Redirects
 
       set(this, 'Access-Control-Allow-Origin', origin);
